@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Property Listings</h1>
+
+<form method="get">
+    <div>
+        <label>Price Range:</label>
+        <select name="price_range" multiple>
+            <option value="1000000">1M+</option>
+            <option value="500000">500K+</option>
+        </select>
+    </div>
+    <div>
+        <label>Location:</label>
+        <select name="location" multiple>
+            <option value="New York">New York</option>
+            <option value="Los Angeles">Los Angeles</option>
+        </select>
+    </div>
+    <div>
+        <label>Type:</label>
+        <select name="type" multiple>
+            <option value="Residential">Residential</option>
+            <option value="Commercial">Commercial</option>
+        </select>
+    </div>
+    <div>
+        <label>Status:</label>
+        <select name="status" multiple>
+            <option value="Available">Available</option>
+            <option value="Sold">Sold</option>
+        </select>
+    </div>
+    <button type="submit">Filter</button>
+</form>
+
+<ul>
+    {% for property in properties %}
+    <li>{{ property.name }} - {{ property.location }} - {{ property.price }} - {{ property.status }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
